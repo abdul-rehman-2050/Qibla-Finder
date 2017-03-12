@@ -37,14 +37,42 @@ Adafruit_TFTLCD tft(LCD_CS, LCD_CD, LCD_WR, LCD_RD, LCD_RESET);
 //===========================================================================
 
 void setup() {
- Serial.begin(9600);   
+  uint16_t width=0,height=0,cx=0,cy=0;
+  
+  
+  Serial.begin(9600);   
   tft.reset();  
   uint16_t identifier = tft.readID();
+  Serial.println(identifier);
   tft.begin(identifier);  
   tft.setRotation(0); 
+  tft.fillScreen(BLACK);
+  tft.setCursor(25, 7);
+  tft.setTextColor(WHITE);  
+  tft.setTextSize(2);
+  //tft.println("Qibla Direction");
+
+  width=tft.width();
+  height=tft.height();
+  cx=width/2; cy=height/2;
+  tft.drawCircle( cx,150,115,BLUE);
+  tft.fillCircle( cx,150,110,BLACK);
+  tft.drawCircle( cx,150,5,RED);
 
   
+  tft.setTextSize(4);
+  tft.setTextColor(RED);  
+  tft.setCursor(cx-10, 40);  
+  tft.println("N");
+  tft.setCursor(cx-10, 240);
+  tft.println("S");
+  tft.setCursor(width-30, 135);  
+  tft.println("E");
+  tft.setCursor(15, 125);
+  tft.println("W");
 
+
+  
 }//setup ends here
 //===========================================================================
 
