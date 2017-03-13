@@ -154,12 +154,28 @@ void loop() {
  
   if(heading>0.3 && heading < 0.9)
   {
-    tft.setTextSize(2);
-    tft.setTextColor(YELLOW);
-    tft.setCursor(cx-40, 120);
-    tft.print("Qibla");
-    tft.setCursor(cx-20,160);    
-    tft.print("Found");
+    //tft.setTextSize(2);
+    //tft.setTextColor(YELLOW);
+    //tft.setCursor(cx-40, 120);
+    //tft.print("Qibla");
+    //tft.setCursor(cx-20,160);    
+    //tft.print("Found");
+
+
+   // tft.drawFastVLine(cx-40,120,40,BLACK);
+    //tft.drawFastVLine(cx+20,120,40,BLACK);
+    //tft.drawFastVLine(cx,100,60,BLACK);
+
+    tft.fillRect(cx-25,120,50,60,BLACK);
+    tft.fillRect(cx-25,132,50,7,YELLOW);
+    tft.fillRect(cx-23,145,3,7,YELLOW);
+    tft.fillRect(cx-14,145,9,7,YELLOW);
+    tft.fillRect(cx,145,6,7,YELLOW);
+    tft.fillRect(cx+12,145,10,7,YELLOW);
+    
+
+
+    
     
   }
   else 
