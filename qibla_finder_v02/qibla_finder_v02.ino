@@ -39,9 +39,9 @@ Started at: 12-MAR-2017, 5:18PM
 Adafruit_TFTLCD tft(LCD_CS, LCD_CD, LCD_WR, LCD_RD, LCD_RESET);
 HMC5883L compass;
 //===========================================================================
-
+ uint16_t width=0,height=0,cx=0,cy=0;
 void setup() {
-  uint16_t width=0,height=0,cx=0,cy=0;
+ 
   
   
   Serial.begin(9600);   
@@ -149,7 +149,27 @@ void loop() {
   tft.print(heading);
   tft.print(", D=");
   tft.print(headingDegrees);
+  tft.fillCircle( cx,150,55,RED);
+  tft.setTextSize(3);
+ 
+  if(heading>0.3 && heading < 0.9)
+  {
+    tft.setTextSize(2);
+    tft.setTextColor(YELLOW);
+    tft.setCursor(cx-40, 120);
+    tft.print("Qibla");
+    tft.setCursor(cx-20,160);    
+    tft.print("Found");
+    
+  }
+  else 
+  {
+    
+     tft.setTextColor(WHITE);
+     tft.setCursor(cx-40, 150);
+    tft.print(heading);
   
+  }
   delay(1000);
 
 
